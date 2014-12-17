@@ -9,6 +9,7 @@ setup(name = 'conversedme',
     install_requires=[ 'Flask==0.10.1',
         'Flask-Login==0.2.7',
         'Flask-WTF==0.9.2',
-        'dnspython'
+        'dnspython',
+        'requests'
         ],
     )
