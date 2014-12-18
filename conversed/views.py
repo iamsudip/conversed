@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import json
 
 import requests
 
@@ -15,10 +16,17 @@ def profile(emailid=None):
     emailid = request.form['emailid']
     emailstatus = validate(emailid)
     if emailstatus:
-        return render_template("sorry.html")
+        return render_template("sorry.html") # enable js validation currently only server side validation is done
     else:
-        data = requests.get("https://vibeapp.co/api/v1/initial_data/?api_key=b2acf1eadef73f4aeda890e0571f3e06&email="+emailid)
-        return render_template("data.html")
+        response = requests.get("https://vibeapp.co/api/v1/initial_data/?api_key=b2acf1eadef73f4aeda890e0571f3e06&email="+emailid)
+        if response.status_code == 200:
+            data = json.loads(response.text)
+            if data.get('success'):
+                return render_template("data.html", user=data)
+            else:
+                return render_template("sorry.html")
+        else:
+            return render_template("sorry.html")
 
 @application.errorhandler(404)
 def not_found(e):
