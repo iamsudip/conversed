@@ -1,34 +1,12 @@
 {% extends "base.html" %}
 
-{% block header %}<p>{{user.name}}</p>{% endblock %}
+{% block header %}
+
+
+
+{% endblock %}
 
 {% block content %}
 
-  <div align="center"><img src="{{user.profile_picture}}" height="100" width="100"></div>
-  <div align="justify">
-  {% if user.gender %} <p>Gender: {{ user.gender }}</p> {% endif %}
-  </div>
-  <div align="justify">
-  <p>Bio: {{ user.bio|striptags()|urlize() }}</p>
-  </div>
-  <div align="justify">
-  {% if user.websites %} <p>Websites: {{ user.websites|websites()|urlize() }}</p> {% endif %}
-  </div>
-  <div align="justify">
-  {% if user.topics %} <p>Topics: {{ user.topics|join(', ') }}</p> {% endif %}
-  </div>
-  <div align="justify">
-  {% if user.email %} <p>Email: {{ user.email|urlize() }}</p> {% endif %}
-  </div>
-  <div align="justify">
-  {% if user.organizations %}
-    <p>Work Profile:</p>
-    <ul>
-    {% for org in user.organizations|need_four_workplaces() %}
-      <li><p>Worked at {{ org.name }}{% if org.title %} as {{ org.title }} {% endif %}{% if org.timespan %} around {{ org.timespan.split("-")|first() }} {% endif %}</p></li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-  </div>
 
 {% endblock %}
