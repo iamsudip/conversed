@@ -16,10 +16,23 @@
   <p>Bio: {{ user.bio|striptags()|urlize() }}</p>
   </div>
   <div align="justify">
+  {% if user.websites %} <p>Websites: {{ user.websites|websites()|urlize() }}</p> {% endif %}
+  </div>
+  <div align="justify">
   {% if user.topics %} <p>Topics: {{ user.topics|join(', ') }}</p> {% endif %}
   </div>
   <div align="justify">
   {% if user.email %} <p>Email: {{ user.email|urlize() }}</p> {% endif %}
+  </div>
+  <div align="justify">
+  {% if user.organizations %}
+    <p>Work Profile:</p>
+    <ul>
+    {% for org in user.organizations|need_four_workplaces() %}
+      <li><p>Worked at {{ org.name }}{% if org.title %} as {{ org.title }} {% endif %}{% if org.timespan %} around {{ org.timespan.split("-")|first() }} {% endif %}</p></li>
+    {% endfor %}
+    </ul>
+  {% endif %}
   </div>
 
 {% endblock %}
