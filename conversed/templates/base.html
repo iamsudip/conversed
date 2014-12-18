@@ -19,9 +19,38 @@
   </head>
   <body>
 
-          {% block content %}
-          {% endblock %}
+    <div class="site-wrapper">
 
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">
+              {% block header %}{% endblock%}
+              </h3>
+              <!-- <ul class="nav masthead-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul> -->
+            </div>
+          </div>
+
+            {% block content %}
+            {% endblock %}
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Created by <a href="http://www.iamsudip.me/">@iamsudipy</a> based on data from <a href="https://vibeapp.co/">Vibeapp</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
       <!-- Bootstrap core JavaScript
       ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
