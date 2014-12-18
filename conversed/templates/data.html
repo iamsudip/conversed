@@ -15,16 +15,16 @@
   <div align="justify">
   <p>Bio: {{ user.bio|striptags()|urlize() }}</p>
   </div>
-  <div align="justify">
+  <!-- <div align="justify">
   {% if user.websites %} <p>Websites: {{ user.websites|websites()|urlize() }}</p> {% endif %}
-  </div>
+  </div> -->
   <div align="justify">
   {% if user.topics %} <p>Topics: {{ user.topics|join(', ') }}</p> {% endif %}
   </div>
   <div align="justify">
   {% if user.email %} <p>Email: {{ user.email|urlize() }}</p> {% endif %}
   </div>
-  <div align="justify">
+  <!-- <div align="justify">
   {% if user.organizations %}
     <p>Work Profile:</p>
     <ul>
@@ -33,7 +33,7 @@
     {% endfor %}
     </ul>
   {% endif %}
-  </div>
+  </div> -->
   <!-- <div align="justify">
     {% if user.social_profiles %}
     <p>Social Profile:</p>
