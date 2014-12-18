@@ -2,12 +2,24 @@
 
 {% block header %}
 
-
+<p>{{user.name}}</p>
 
 {% endblock %}
 
 {% block content %}
 
-
+          <img src="{{user.profile_picture}}" width="100" height="100">
+          <div align="justify">
+          {% if user.gender %} <p>Gender: {{ user.gender }}</p> {% endif %}
+          </div>
+          <div align="justify">
+          <p>Bio: {{ user.bio|striptags()|urlize() }}</p>
+          </div>
+          <div align="justify">
+          {% if user.topics %} <p>Topics: {{ user.topics|join(', ') }}</p> {% endif %}
+          </div>
+          <div align="justify">
+          {% if user.email %} <p>Email: {{ user.email|urlize() }}</p> {% endif %}
+          </div>
 
 {% endblock %}
