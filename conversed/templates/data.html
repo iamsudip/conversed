@@ -15,13 +15,13 @@
   <div align="justify">
   <p>Bio: {{ user.bio|striptags()|urlize() }}</p>
   </div>
-  <div align="justify">
-  {% if user.websites %} <p>Websites: {{ user.websites|websites()|urlize() }}</p> {% endif %}
+  <div align="left">
+  {% if user.websites %} <p>Websites: {{ user.websites|websites()|join(', ')|urlize() }}</p> {% endif %}
   </div>
-  <div align="justify">
+  <div align="left">
   {% if user.topics %} <p>Topics: {{ user.topics|join(', ') }}</p> {% endif %}
   </div>
-  <div align="justify">
+  <div align="left">
   {% if user.email %} <p>Email: {{ user.email|urlize() }}</p> {% endif %}
   </div>
   <div align="justify">

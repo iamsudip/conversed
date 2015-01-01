@@ -12,7 +12,7 @@ def index():
     return render_template("index.html")
 
 @application.route('/', methods=['POST'])
-def profile(emailid=None):
+def profile():
     emailid = request.form['emailid']
     emailstatus = validate(emailid)
     if emailstatus:

@@ -125,8 +125,8 @@ body {
  */
 
 .mastfoot {
-  color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
+  color: #444; /* IE8 proofing */
+  color: rgba(0, 0, 0, .5);
 }
 
 
@@ -137,11 +137,11 @@ body {
 @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
-    position: fixed;
+   /* position: fixed;*/
     top: 0;
   }
   .mastfoot {
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
   }
   /* Start the vertical centering */
