@@ -11,31 +11,31 @@
   <div align="center"><img src="{{user.profile_picture}}" height="100" width="100"></div>
   
   <div align="justify">
-    {% if user.gender %} <p>Gender: {{ user.gender }}</p> {% endif %}
+    {% if user.gender %} <p><b>Gender:</b> {{ user.gender }}</p> {% endif %}
   </div>
   
   <div align="justify">
-    {% if user.gender %} <p>Bio: {{ user.bio|striptags()|urlize() }}</p> {% endif %}
+    {% if user.gender %} <p><b>Bio:</b> {{ user.bio|striptags()|urlize() }}</p> {% endif %}
   </div>
   
   <div align="left">
-    {% if user.websites %} <p>Websites: {{ user.websites|websites()|join(', ')|urlize() }}</p> {% endif %}
+    {% if user.websites %} <p><b>Websites:</b> {{ user.websites|websites()|join(', ')|urlize() }}</p> {% endif %}
   </div>
   
   <div align="left">
-    {% if user.topics %} <p>Topics: {{ user.topics|join(', ') }}</p> {% endif %}
+    {% if user.topics %} <p><b>Topics:</b> {{ user.topics|join(', ') }}</p> {% endif %}
   </div>
   
   <div align="left">
-    {% if user.email %} <p>Email: {{ user.email|urlize() }}</p> {% endif %}
+    {% if user.email %} <p><b>Email:</b> {{ user.email|urlize() }}</p> {% endif %}
   </div>
   
   <div align="justify">
     {% if user.organizations %}
-      <p>Work Profile:</p>
+      <p><b>Work Profiles:</b></p>
       <ul>
         {% for org in user.organizations %}
-          <li><p>Worked at {{ org.name }}{% if org.title %} as {{ org.title }} {% endif %}{% if org.timespan %} around {{ org.timespan.split("-")|first() }} {% endif %}</p></li>
+          <li><p>Worked at <b>{{ org.name }}</b>{% if org.title %} as {{ org.title }} {% endif %}{% if org.timespan %} around {{ org.timespan.split("-")|first() }} {% endif %}</p></li>
         {% endfor %}
       </ul>
     {% endif %}
@@ -43,7 +43,7 @@
   
   <div align="justify">
     {% if user.social_profiles %}
-      <p>Social Profiles:</p>
+      <p><b>Social Profiles:</b></p>
       <ul>
         {% for profile in user.social_profiles %}
           {% if profile.typeName != 'Other' %}
