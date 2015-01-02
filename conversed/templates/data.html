@@ -15,7 +15,7 @@
   </div>
   
   <div align="justify">
-    <p>Bio: {{ user.bio|striptags()|urlize() }}</p>
+    {% if user.gender %} <p>Bio: {{ user.bio|striptags()|urlize() }}</p> {% endif %}
   </div>
   
   <div align="left">
@@ -48,7 +48,7 @@
         {% for profile in user.social_profiles %}
           {% if profile.typeName != 'Other' %}
             <li>
-              <p><b>{{ profile.typeName }}:</b> {% if profile.username -%} <a href="{{profile.url }}">{{ profile.username }}</a> {% elif profile.type in ['linkedin', 'googleplus'] %} <b>Id:</b>  <a href="{{profile.url }}">{{ profile.id }}</a>{% endif %}{% if profile.bio %}, {{ profile.bio|striptags()|urlize() }}{% endif %}</p>
+              <p><b>{{ profile.typeName }}</b>{% if profile.type in ['linkedin', 'googleplus', 'foursquare'] %} <b>Id:</b> <a href="{{ profile.url }}">{{ profile.id }}</a> {% elif profile.username -%} <b>:</b> <a href="{{ profile.url }}">{{ profile.username }}</a> {% endif %}{% if profile.bio %}, {{ profile.bio|striptags()|urlize() }}{% endif %}</p>
             </li>
           {% endif %}
         {% endfor %}
