@@ -112,7 +112,11 @@ body {
  */
 
 .cover {
-  padding: 0 20px;
+  /*padding: 0 20px;*/
+  color: rgb(255, 255, 255);
+  position: relative;
+  min-height: 350px;
+  background: url("../images/background.jpg") no-repeat scroll 0px 100% / cover transparent;
 }
 .cover .btn-lg {
   padding: 10px 20px;
@@ -125,8 +129,9 @@ body {
  */
 
 .mastfoot {
-  color: #444; /* IE8 proofing */
-  color: rgba(0, 0, 0, .5);
+  color: #000; /* IE8 proofing */
+  /*color: rgba(0, 0, 0, .5);*/
+  color: rgb(255, 255, 255)
 }
 
 
@@ -137,11 +142,11 @@ body {
 @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
-   /* position: fixed;*/
+   position: relative;
     top: 0;
   }
   .mastfoot {
-    /*position: fixed;*/
+    position: relative;
     bottom: 0;
   }
   /* Start the vertical centering */
