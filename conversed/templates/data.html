@@ -1,59 +1,110 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="../static/images/favicon.png">
 
-{% block header %}
+      <title>Conversed!</title>
 
-<p>{{user.name}}</p>
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+      <!-- Custom styles for this template -->
+      <link href="../static/css/cover.css" rel="stylesheet">
 
-{% endblock %}
+  </head>
+  <body>
 
-{% block content %}
+    <div class="site-wrapper">
 
-  <div align="center"><img src="{{user.profile_picture}}" height="100" width="100"></div>
-  
-  <div align="justify">
-    {% if user.gender %} <p><b>Gender:</b> {{ user.gender }}</p> {% endif %}
-  </div>
-  
-  <div align="justify">
-    {% if user.gender %} <p><b>Bio:</b> {{ user.bio|striptags()|urlize() }}</p> {% endif %}
-  </div>
-  
-  <div align="left">
-    {% if user.websites %} <p><b>Websites:</b> {{ user.websites|websites()|join(', ')|urlize() }}</p> {% endif %}
-  </div>
-  
-  <div align="left">
-    {% if user.topics %} <p><b>Topics:</b> {{ user.topics|join(', ') }}</p> {% endif %}
-  </div>
-  
-  <div align="left">
-    {% if user.email %} <p><b>Email:</b> {{ user.email|urlize() }}</p> {% endif %}
-  </div>
-  
-  <div align="justify">
-    {% if user.organizations %}
-      <p><b>Work Profiles:</b></p>
-      <ul>
-        {% for org in user.organizations %}
-          <li><p>Worked at <b>{{ org.name }}</b>{% if org.title %} as {{ org.title }} {% endif %}{% if org.timespan %} around {{ org.timespan.split("-")|first() }} {% endif %}</p></li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  </div>
-  
-  <div align="justify">
-    {% if user.social_profiles %}
-      <p><b>Social Profiles:</b></p>
-      <ul>
-        {% for profile in user.social_profiles %}
-          {% if profile.typeName not in ['Other', 'Klout'] %}
-            <li>
-              <p><b>{{ profile.typeName }}</b>{% if profile.type in ['linkedin', 'googleplus', 'foursquare'] %} <b>Id:</b> <a href="{{ profile.url }}">{{ profile.id or profile.username }}</a> {% elif profile.username -%} <b>:</b> <a href="{{ profile.url }}">{{ profile.username }}</a> {% endif %}{% if profile.bio %}, {{ profile.bio|striptags()|urlize() }}{% endif %}</p>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    {% endif %}
-  </div>
+      <div class="site-wrapper-inner">
 
-{% endblock %}
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">
+                <p>{{user.name}}</p>
+              </h3>
+              <!-- <ul class="nav masthead-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul> -->
+            </div>
+          </div>
+
+          <div align="center"><img src="{{user.profile_picture}}" height="100" width="100"></div>
+          
+          <div align="justify">
+            {% if user.gender %} <p><b>Gender:</b> {{ user.gender }}</p> {% endif %}
+          </div>
+          
+          <div align="justify">
+            {% if user.gender %} <p><b>Bio:</b> {{ user.bio|striptags()|urlize() }}</p> {% endif %}
+          </div>
+          
+          <div align="left">
+            {% if user.websites %} <p><b>Websites:</b> {{ user.websites|websites()|join(', ')|urlize() }}</p> {% endif %}
+          </div>
+          
+          <div align="left">
+            {% if user.topics %} <p><b>Topics:</b> {{ user.topics|join(', ') }}</p> {% endif %}
+          </div>
+          
+          <div align="left">
+            {% if user.email %} <p><b>Email:</b> {{ user.email|urlize() }}</p> {% endif %}
+          </div>
+          
+          <div align="justify">
+            {% if user.organizations %}
+              <p><b>Work Profiles:</b></p>
+              <ul>
+                {% for org in user.organizations %}
+                  <li><p>Worked at <b>{{ org.name }}</b>{% if org.title %} as {{ org.title }} {% endif %}{% if org.timespan %} around {{ org.timespan.split("-")|first() }} {% endif %}</p></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+          
+          <div align="justify">
+            {% if user.social_profiles %}
+              <p><b>Social Profiles:</b></p>
+              <ul>
+                {% for profile in user.social_profiles %}
+                  {% if profile.typeName not in ['Other', 'Klout'] %}
+                    <li>
+                      <p><b>{{ profile.typeName }}</b>{% if profile.type in ['linkedin', 'googleplus', 'foursquare'] %} <b>Id:</b> <a href="{{ profile.url }}">{{ profile.id or profile.username }}</a> {% elif profile.username -%} <b>:</b> <a href="{{ profile.url }}">{{ profile.username }}</a> {% endif %}{% if profile.bio %}, {{ profile.bio|striptags()|urlize() }}{% endif %}</p>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Created by <a href="http://www.iamsudip.me/">@iamsudipy</a> based on data from <a href="https://vibeapp.co/">Vibeapp</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+          $('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+          $('[data-toggle="popover"]').popover({trigger: 'hover','placement': 'top'});
+      </script>
+  </body>
+</html>
+
