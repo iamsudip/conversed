@@ -8,8 +8,8 @@ from utils import validate
 
 
 @application.route('/')
-def index():
-    return render_template("index.html")
+def home():
+    return render_template("home.html")
 
 @application.route('/', methods=['POST'])
 def profile():
