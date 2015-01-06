@@ -5,7 +5,7 @@
 /* Links */
 a,
 a:focus {
-  color: #14967c
+  color: #14967c;
 }
 a:hover {
   color: #1ABC9C;
@@ -129,9 +129,8 @@ body {
  */
 
 .mastfoot {
-  color: #000; /* IE8 proofing */
-  /*color: rgba(0, 0, 0, .5);*/
-  color: rgb(255, 255, 255)
+  color: #FFF; /* IE8 proofing */
+  color: rgba(0, 0, 0, .5);
 }
 
 
@@ -142,7 +141,7 @@ body {
 @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
-   position: relative;
+    position: relative;
     top: 0;
   }
   .mastfoot {
