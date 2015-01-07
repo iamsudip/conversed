@@ -61,37 +61,39 @@
     </div>
     <!--  -->
     
-      <!-- Bootstrap core JavaScript
-      ================================================== -->
-      <!-- Placed at the end of the document so the pages load faster -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-      <script type="text/javascript">
-        $('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
-        $('[data-toggle="popover"]').popover({trigger: 'hover','placement': 'top'});
-      </script>
-      {% block footer %}
-      {% endblock %}
-      <script type="text/javascript">
-    		function ButtonClicked()
-    		{
-    		   document.getElementById("form").style.display = "none"; // to undisplay
-    		   document.getElementById("loading").style.display = ""; // to display
-    		   return true;
-    		}
-    		var FirstLoading = true;
-    		function RestoreSubmitButton()
-    		{
-    		   if( FirstLoading )
-    		   {
-    		      FirstLoading = false;
-    		      return;
-    		   }
-    		   document.getElementById("form").style.display = ""; // to display
-    		   document.getElementById("loading").style.display = "none"; // to undisplay
-    		}
-    		// To disable restoring submit button, disable or delete next line.
-    		document.onfocus = RestoreSubmitButton;
-      </script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $('[data-toggle="tooltip"]').tooltip();
+      $('[data-toggle="popover"]').popover({trigger: 'hover','placement': 'top'});
+    </script>
+    <!-- JS for loading animation *start* -->
+    <script type="text/javascript">
+    	function ButtonClicked()
+    	{
+    	   document.getElementById("form").style.display = "none"; // to undisplay
+    	   document.getElementById("loading").style.display = ""; // to display
+    	   return true;
+    	}
+    	var FirstLoading = true;
+    	function RestoreSubmitButton()
+    	{
+    	   if( FirstLoading )
+    	   {
+    	      FirstLoading = false;
+    	      return;
+    	   }
+    	   document.getElementById("form").style.display = ""; // to display
+    	   document.getElementById("loading").style.display = "none"; // to undisplay
+    	}
+    	// To disable restoring submit button, disable or delete next line.
+    	document.onfocus = RestoreSubmitButton;
+    </script>
+    <!-- JS for loading animation *end* -->
+    {% block footer %}
+    {% endblock %}
   </body>
 </html>
