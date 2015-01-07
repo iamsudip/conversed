@@ -6,12 +6,12 @@
     <!-- <h1 class="cover-heading">Cover your page.</h1> -->
     <p class="lead">We help you find the person behind an email address</p>
     <!-- <p class="lead">Just put it below.</p> -->
-    <form class="form-search" action="." method="POST">
+    <form class="form-search" id="emailForm" action="." method="POST">
       <div class="form-group">
         <div class="input-group input-group-md">
             <div class="icon-addon addon-md">
-                <input class="form-control" id="email" type="text" placeholder="Enter an email address" name="emailid">
-                <label for="email" class="glyphicon glyphicon-search" rel="tooltip" data-toggle="tooltip" data-placement="top" title="Email search engine"></label>
+              <input class="form-control" id="email" type="email" placeholder="Enter an email address" name="emailid">
+              <label for="email" class="glyphicon glyphicon-search" rel="tooltip" data-toggle="tooltip" data-placement="top" title="Email search engine"></label>
             </div>
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit" aria-label="Search" onclick="ButtonClicked()">
