@@ -19,7 +19,7 @@ def profile():
         return render_template("sorry.html") # enable js validation currently only server side validation is done
     else:
         try: # https://vibeapp.co/api/v1/initial_data/?api_key=b2acf1eadef73f4aeda890e0571f3e06&email=
-            response = requests.get("https://vibeapp.co/api/v1/initial_data/?api_key=b2acf1eadef73f4aeda890e0571f3e0&email="+emailid)
+            response = requests.get("https://vibeapp.co/api/v1/initial_data/?api_key=b2acf1eadef73f4aeda890e0571f3e06&email="+emailid)
             if response.status_code == 200:
                 data = json.loads(response.text)
                 if data.get('success'):
