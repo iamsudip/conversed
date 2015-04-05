@@ -1,0 +1,25 @@
+.divider{
+	width: auto;
+	height: 5px;
+	margin: 5px;
+	background-color: red;
+	border-radius: 10px;
+}
+.pro-pic{
+	border: 3px solid black;
+	border-top-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
+#user-name{
+	font-size:32px;
+	text-align: center;
+}
+
+.info-room{
+	height:auto;
+	width: auto;
+	padding: 10px;
+	border: 3px solid black;
+	border-radius: 10px;
+}

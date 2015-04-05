@@ -15,6 +15,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
       <!-- Custom styles for this template -->
       <link href="../static/css/cover.css" rel="stylesheet">
+	  <link href="../static/css/style.css" rel="stylesheet">
 
   </head>
   <body>
@@ -27,9 +28,7 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">
-                <p>{{user.name}}</p>
-              </h3>
+            
               <!-- <ul class="nav masthead-nav">
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#">Contact</a></li>
@@ -37,8 +36,15 @@
             </div>
           </div>
 
-          <div align="center"><img src="{{user.profile_picture}}" height="100" width="100"></div>
-          
+          <div align="center"><img src="{{user.profile_picture}}" height="180" width="auto" class="pro-pic"></div>
+
+		  <p id="user-name">{{user.name}}</p>                        
+
+          <div class="divider"></div>
+
+<!-- info-room starts -->
+
+<div class="info-room">
           <div align="justify">
             {% if user.gender %} <p><b>Gender:</b> {{ user.gender }}</p> {% endif %}
           </div>
@@ -84,8 +90,12 @@
               </ul>
             {% endif %}
           </div>
+</div> 
 
-          <div class="mastfoot">
+<!-- info-room ends -->
+       
+
+   <div class="mastfoot">
             <div class="inner">
               <p>Created by <a href="http://www.iamsudip.me/">@iamsudipy</a> based on data from <a href="https://vibeapp.co/">Vibeapp</a>.</p>
             </div>
