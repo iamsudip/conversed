@@ -5,12 +5,14 @@ import requests
 import redis
 
 from main import application, POOL
-from utils import validate
+from utils import cleanup, validate
 from config import API, API_KEY
+
 
 @application.route('/')
 def home():
     return render_template("home.html")
+
 
 @application.route('/', methods=['POST'])
 def profile():
@@ -21,7 +23,7 @@ def profile():
     else:
         try:
             redis_server = redis.Redis(connection_pool=POOL)
-            if not redis_server.exists(emailid):
+            if not redis_server.exists(emailid) or True:
                 payload = {
                     'api_key': API_KEY,
                     'email': emailid,
@@ -30,7 +32,8 @@ def profile():
                 if response.status_code == 200:
                     data = json.loads(response.text)
                     if data.get('success'):
-                        redis_server.set(emailid, response.text)
+                        cleaned_data = cleanup(data)
+                        redis_server.set(emailid, json.dumps(cleaned_data))
                         redis_server.bgsave()
                 else:
                     return render_template("sorry.html")
@@ -42,9 +45,11 @@ def profile():
         except requests.exceptions.ConnectionError:
             return render_template("sorry.html")
 
+
 @application.route('/status/')
 def api_status():
     return render_template("home.html")
+
 
 @application.errorhandler(404)
 def not_found(e):

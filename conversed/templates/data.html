@@ -64,7 +64,9 @@
                 <p><b>Work Profiles:</b></p>
                 <ul>
                   {% for org in user.organizations %}
-                    <li><p>Worked at <b>{{ org.name }}</b>{% if org.title %} as {{ org.title }} {% endif %}{% if org.timespan %} around {{ org.timespan.split("-")|first() }} {% endif %}</p></li>
+                    {% if org.name %}
+                      <li><p>Worked at <b>{{ org.name }}</b>{% if org.title %} as {{ org.title }} {% endif %}{% if org.timespan %} around {{ org.timespan.split("-")|first() }} {% endif %}</p></li>
+                    {% endif %}
                   {% endfor %}
                 </ul>
               {% endif %}
@@ -75,9 +77,14 @@
                 <p><b>Social Profiles:</b></p>
                 <ul>
                   {% for profile in user.social_profiles %}
-                    {% if profile.typeName not in ['Other', 'Klout'] %}
+                    {% if profile.typeName not in ['Other', 'Klout', 'About.me', 'Aboutme'] %}
                       <li>
                         <p><b>{{ profile.typeName }}</b>{% if profile.type in ['linkedin', 'googleplus', 'foursquare'] %} <b>Id:</b> <a href="{{ profile.url }}">{{ profile.id or profile.username }}</a> {% elif profile.username -%} <b>:</b> <a href="{{ profile.url }}">{{ profile.username }}</a> {% endif %}{% if profile.bio %}, {{ profile.bio|striptags()|urlize() }}{% endif %}</p>
+                      </li>
+                    {% endif %}
+                    {% if profile.typeName in ['About.me', 'Aboutme'] %}
+                      <li>
+                        <p><b>{{ profile.typeName }}: </b><a href="{{ profile.url }}">{{ profile.url }}</a>
                       </li>
                     {% endif %}
                   {% endfor %}
