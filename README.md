@@ -40,17 +40,21 @@ First fork & clone the repo.
 
 Now *before creating and entering into virtualenv* make sure you install the following::
 
+We are using *redis* as our database. So you need to install this:
+
+    $ sudo apt-get install redis
+
 I always recommend python-virtualenv for development.
 
 After installing and activating the virtual environment do the following
 
 Install the requirements file::
 
-      $ pip install -r requirements.txt
+    $ pip install -r requirements.txt
 
 cd to conversed/conversed locate main.py and run::
 
-      $ python main.py
+    $ python main.py
 
 Happy hacking!
 

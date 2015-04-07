@@ -1,6 +1,15 @@
 from flask import Flask
+import redis
+
+from config import REDIS_HOST, REDIS_PORT, REDIS_PASSWORD
 
 application = Flask(__name__)
+redis_server_pool = redis.ConnectionPool(
+        host=REDIS_HOST,
+        port=REDIS_PORT,
+        db=0,
+        password=REDIS_PASSWORD
+    )
 
 from views import *
 
@@ -16,3 +25,4 @@ def need_four_workplaces(workplaces_list):
 
 if __name__ == '__main__':
     application.run(debug=True, host="0.0.0.0", port=8888)
+    

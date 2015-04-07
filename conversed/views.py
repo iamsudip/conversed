@@ -2,8 +2,9 @@ from flask import Flask, render_template, request
 import json
 
 import requests
+import redis
 
-from main import application
+from main import application, redis_server_pool
 from utils import validate
 
 
@@ -18,14 +19,20 @@ def profile():
     if emailstatus:
         return render_template("sorry.html") # enable js validation currently only server side validation is done
     else:
-        try: # https://vibeapp.co/api/v1/initial_data/?api_key=b2acf1eadef73f4aeda890e0571f3e06&email=
-            response = requests.get("https://vibeapp.co/api/v1/initial_data/?api_key=b2acf1eadef73f4aeda890e0571f3e06&email="+emailid)
-            if response.status_code == 200:
-                data = json.loads(response.text)
-                if data.get('success'):
-                    return render_template("data.html", user=data)
+        try:
+            redis_server = redis.Redis(connection_pool=redis_server_pool)
+            if not redis_server.exists(emailid):
+                response = requests.get("https://vibeapp.co/api/v1/initial_data/?api_key=b2acf1eadef73f4aeda890e0571f3e06&email="+emailid)
+                if response.status_code == 200:
+                    data = json.loads(response.text)
+                    if data.get('success'):
+                        redis_server.set(emailid, response.text)
+                        redis_server.bgsave()
                 else:
                     return render_template("sorry.html")
+            data = json.loads(redis_server.get(emailid))
+            if data.get('success', False):
+                return render_template("data.html", user=data)
             else:
                 return render_template("sorry.html")
         except requests.exceptions.ConnectionError:
