@@ -4,9 +4,9 @@ import json
 import requests
 import redis
 
-from main import application, redis_server_pool
+from main import application, POOL
 from utils import validate
-
+from config import API, API_KEY
 
 @application.route('/')
 def home():
@@ -17,12 +17,16 @@ def profile():
     emailid = request.form['emailid']
     emailstatus = validate(emailid)
     if emailstatus:
-        return render_template("sorry.html") # enable js validation currently only server side validation is done
+        return render_template("sorry.html")
     else:
         try:
-            redis_server = redis.Redis(connection_pool=redis_server_pool)
+            redis_server = redis.Redis(connection_pool=POOL)
             if not redis_server.exists(emailid):
-                response = requests.get("https://vibeapp.co/api/v1/initial_data/?api_key=b2acf1eadef73f4aeda890e0571f3e06&email="+emailid)
+                payload = {
+                    'api_key': API_KEY,
+                    'email': emailid,
+                }
+                response = requests.get(API, params=payload)
                 if response.status_code == 200:
                     data = json.loads(response.text)
                     if data.get('success'):
@@ -37,7 +41,11 @@ def profile():
                 return render_template("sorry.html")
         except requests.exceptions.ConnectionError:
             return render_template("sorry.html")
-            
+
+@application.route('/status/')
+def api_status():
+    return render_template("home.html")
+
 @application.errorhandler(404)
 def not_found(e):
     return render_template("404.html"), 404
