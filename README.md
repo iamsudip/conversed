@@ -20,11 +20,11 @@ But API data is very old that needs to be updated.
 
 - [ ] If user has social profiles, scrap the page instantly and update and show the data
 
-- [ ] Right now, we are blindly dependent on API calls to vibeapp. We need to store the data to make things faster in our database so that once an email has been updated we won't use call API from the next time
+- [x] Right now, we are blindly dependent on API calls to vibeapp. We need to store the data to make things faster in our database so that once an email has been updated we won't use call API from the next time
 
-- [ ] New UI for entire webapp, that's assigned to @sohamd3 
+- [ ] New UI for entire webapp
 
-- [ ] Right now, redhatcloud idles the hosting service when there is less user. Write a cronjob or ping service that will make sure that the service is running 24/7
+- [x] Right now, redhatcloud idles the hosting service when there is less user. Write a cronjob or ping service that will make sure that the service is running 24/7
 
 References
 ----------

@@ -23,6 +23,7 @@ def profile():
     else:
         try:
             redis_server = redis.Redis(connection_pool=POOL)
+            # Remove the following True when development is stable
             if not redis_server.exists(emailid) or True:
                 payload = {
                     'api_key': API_KEY,
