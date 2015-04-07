@@ -23,11 +23,11 @@ def profile():
     else:
         try:
             redis_server = redis.Redis(connection_pool=POOL)
-            # Remove the following True when development is stable
             if not (redis_server.exists(emailid) or LOCAL_DEV):
                 payload = {
                     'api_key': API_KEY,
                     'email': emailid,
+                    'force': 1
                 }
                 response = requests.get(API, params=payload)
                 if response.status_code == 200:
