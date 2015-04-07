@@ -2,6 +2,7 @@ from flask import Flask
 import redis
 
 from config import REDIS_HOST, REDIS_PORT, REDIS_PASSWORD
+from utils import initredis
 
 application = Flask(__name__)
 POOL = redis.ConnectionPool(
@@ -23,5 +24,6 @@ def need_four_workplaces(workplaces_list):
     return workplaces_list[:4]
 
 if __name__ == '__main__':
+    initredis(POOL)
     application.run(debug=True, host="0.0.0.0", port=8888)
     

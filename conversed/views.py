@@ -6,7 +6,7 @@ import redis
 
 from main import application, POOL
 from utils import cleanup, validate
-from config import API, API_KEY
+from config import API, API_KEY, LOCAL_DEV
 
 
 @application.route('/')
@@ -24,7 +24,7 @@ def profile():
         try:
             redis_server = redis.Redis(connection_pool=POOL)
             # Remove the following True when development is stable
-            if not redis_server.exists(emailid) or True:
+            if not (redis_server.exists(emailid) or LOCAL_DEV):
                 payload = {
                     'api_key': API_KEY,
                     'email': emailid,
@@ -43,7 +43,7 @@ def profile():
                 return render_template("data.html", user=data)
             else:
                 return render_template("sorry.html")
-        except requests.exceptions.ConnectionError:
+        except (requests.exceptions.ConnectionError, TypeError):
             return render_template("sorry.html")
 
 
