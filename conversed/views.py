@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from ast import literal_eval
 import json
 
+from flask import Flask, render_template, request
 import requests
 import redis
 
@@ -38,7 +39,7 @@ def profile():
                         redis_server.bgsave()
                 else:
                     return render_template("sorry.html")
-            data = json.loads(redis_server.get(emailid))
+            data = literal_eval(redis_server.get(emailid))
             if data.get('success', False):
                 return render_template("data.html", user=data)
             else:
