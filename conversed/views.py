@@ -39,7 +39,10 @@ def profile():
                         redis_server.bgsave()
                 else:
                     return render_template("sorry.html")
-            data = literal_eval(redis_server.get(emailid))
+            try:
+                data = json.loads(redis_server.get(emailid))
+            except ValueError:
+                data = literal_eval(redis_server.get(emailid))
             if data.get('success', False):
                 return render_template("data.html", user=data)
             else:
