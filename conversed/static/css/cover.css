@@ -134,8 +134,8 @@ footer {
  */
 
 .mastfoot {
-  color: #FFF; /* IE8 proofing */
-  color: rgba(0, 0, 0, .5);
+  color: #000; /* IE8 proofing */
+  color: rgba(255, 255, 255, 0.9);
 }
 
 
