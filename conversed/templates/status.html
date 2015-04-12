@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="inner">
+    <p style="font-size:120px">Ok.</p>
+    <p class="lead">API Health: Fine</p>
+    <p class="lead">API hits: {{data.request_count}}</p>
+    <p class="lead">API requests left: {{data.request_left}}</p>
+  </div>
+
+{% endblock %}

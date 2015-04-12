@@ -7,7 +7,7 @@ import redis
 
 from main import application, POOL
 from utils import cleanup, validate
-from config import API, API_KEY, LOCAL_DEV
+from config import API, API_KEY, LOCAL_DEV, API_STAT
 
 
 @application.route('/')
@@ -53,7 +53,15 @@ def profile():
 
 @application.route('/status/')
 def api_status():
-    return render_template("home.html")
+    payload = {
+        'api_key': API_KEY,
+    }
+    response = requests.get(API_STAT, params=payload)
+    if response.status_code == 200:
+        data = json.loads(response.text)
+        return render_template("status.html", data=data)
+    else:
+        return render_template("home.html")
 
 
 @application.errorhandler(404)

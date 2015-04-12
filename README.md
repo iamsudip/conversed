@@ -10,7 +10,7 @@ Find details about people only using email address
 api
 ---
 
-Status check: https://vibeapp.co/api/v1/api_stats/?api_key=b2acf1eadef73f4aeda890e0571f3e06
+Status check: http://conversedme-iamsudip.rhcloud.com/status/
 
 TODO
 ----
