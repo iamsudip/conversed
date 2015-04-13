@@ -24,7 +24,7 @@ But API data is very old that needs to be updated.
 
 - [ ] New UI for entire webapp
 
-- [ ] Right now, redhatcloud idles the hosting service when there is less user. Write a cronjob or ping service that will make sure that the service is running 24/7
+- [x] Right now, redhatcloud idles the hosting service when there is less user. Write a cronjob or ping service that will make sure that the service is running 24/7
 
 References
 ----------
