@@ -24,7 +24,7 @@ But API data is very old that needs to be updated.
 
 - [ ] New UI for entire webapp
 
-- [x] Right now, redhatcloud idles the hosting service when there is less user. Write a cronjob or ping service that will make sure that the service is running 24/7
+- [ ] Right now, redhatcloud idles the hosting service when there is less user. Write a cronjob or ping service that will make sure that the service is running 24/7
 
 References
 ----------
@@ -40,9 +40,19 @@ First fork & clone the repo.
 
 Now *before creating and entering into virtualenv* make sure you install the following::
 
-We are using *redis* as our database. So you need to install this:
+We are using *redis* as our database. So you need to install this, follow instructions below:
 
-    $ sudo apt-get install redis
+    $ wget https://github.com/antirez/redis/archive/2.8.19.tar.gz
+
+    $ tar -xvzf 2.8.19.tar.gz
+
+    $ cd 2.8.19
+
+    $ sudo make install
+
+    $ redis-server
+
+    $ [ctrl] + d
 
 I always recommend python-virtualenv for development.
 
