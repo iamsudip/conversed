@@ -1,6 +1,6 @@
-=======================
-http://bit.do/conversed
-=======================
+============================
+http://conversed.iamsudip.me
+============================
 
 Service Description
 -------------------
@@ -10,7 +10,7 @@ Find details about people only using email address
 api
 ---
 
-Status check: http://conversedme-iamsudip.rhcloud.com/status/
+Status check: http://conversed.iamsudip.me/status/
 
 TODO
 ----

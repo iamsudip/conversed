@@ -79,12 +79,12 @@
                   {% for profile in user.social_profiles %}
                     {% if profile.typeName not in ['Other', 'Klout', 'About.me', 'Aboutme'] %}
                       <li>
-                        <p><b>{{ profile.typeName }}</b>{% if profile.type in ['linkedin', 'googleplus', 'foursquare', 'google', 'googleprofile'] %} <b>ID:</b> <a href="{{ profile.url }}">{% if profile.type == profile.username %}{{ profile.url }}{% else %}{{ profile.id or profile.username }}{% endif %}</a> {% elif profile.username -%} <b>:</b> <a href="{{ profile.url }}">{{ profile.username }}</a> {% endif %}{% if profile.bio %}, {{ profile.bio|striptags()|urlize() }}{% endif %}</p>
+                        <p><b>{{ profile.typeName }}</b>{% if profile.type in ['linkedin', 'googleplus', 'foursquare', 'google', 'googleprofile'] %} <b>ID:</b> <a href="{{ profile.url }}" target="_blank">{% if profile.type == profile.username %}{{ profile.url }}{% else %}{{ profile.id or profile.username }}{% endif %}</a> {% elif profile.username -%} <b>:</b> <a href="{{ profile.url }}" target="_blank">{{ profile.username }}</a> {% endif %}{% if profile.bio %}, {{ profile.bio|striptags()|urlize() }}{% endif %}</p>
                       </li>
                     {% endif %}
                     {% if profile.typeName in ['About.me', 'Aboutme'] %}
                       <li>
-                        <p><b>{{ profile.typeName }}: </b><a href="{{ profile.url }}">{{ profile.url }}</a>
+                        <p><b>{{ profile.typeName }}: </b><a href="{{ profile.url }}" target="_blank">{{ profile.url }}</a>
                       </li>
                     {% endif %}
                   {% endfor %}
@@ -95,7 +95,7 @@
 
           <footer>
             <div class="inner">
-                 <p>Created with <img src="../static/images/ico_red.png" height="17px" width="17px"></img> based on data from <a href="https://vibeapp.co/">Vibeapp</a>.</p>
+                 <p>Created with <img src="../static/images/ico_red.png" height="17px" width="17px"></img> based on data from <a href="https://vibeapp.co/" target="_blank">Vibeapp</a>.</p>
             </div>
           </footer>
 
