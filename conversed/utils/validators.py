@@ -16,15 +16,17 @@ def validate(emailid):
     if email:
         email_domain = emailid.split('@')[-1]
         if not email_domain:
-            return True
+            return False
         try:
             dns.resolver.query(email_domain, 'MX')
         except dns.resolver.NXDOMAIN:
-            return True
+            return False
         except dns.resolver.NoAnswer:
-            return True
+            return False
         except (dns.resolver.Timeout, dns.resolver.NoNameservers):
-            return None
+            return True
+        else:
+            return True
     else:
-        return True
+        return False
 

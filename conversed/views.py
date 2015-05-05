@@ -18,8 +18,8 @@ def home():
 @application.route('/', methods=['POST'])
 def profile():
     emailid = request.form['emailid']
-    emailstatus = validate(emailid)
-    if emailstatus:
+    validated = validate(emailid)
+    if not validated:
         return render_template("sorry.html")
     else:
         try:
