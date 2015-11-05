@@ -1,7 +1,7 @@
 from ast import literal_eval
 import json
 
-from flask import Flask, render_template, request
+from flask import render_template, request
 import requests
 import redis
 
@@ -17,7 +17,7 @@ def home():
 
 @application.route('/', methods=['POST'])
 def profile():
-    emailid = request.form['emailid']
+    emailid = request.form['emailid'].strip()
     validated = validate(emailid)
     if not validated:
         return render_template("sorry.html")

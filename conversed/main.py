@@ -26,4 +26,4 @@ def need_four_workplaces(workplaces_list):
 if __name__ == '__main__':
     initredis(POOL)
     application.run(debug=True, host="0.0.0.0", port=8888)
-    
+

@@ -1,6 +1,6 @@
-============================
-http://conversed.iamsudip.me
-============================
+=============================
+http://conversed.iamsudip.xyz
+=============================
 
 Service Description
 -------------------
@@ -10,7 +10,7 @@ Find details about people only using email address
 api
 ---
 
-Status check: http://conversed.iamsudip.me/status/
+Status check: http://conversed.iamsudip.xyz/status/
 
 TODO
 ----
