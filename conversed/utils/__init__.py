@@ -1,2 +1,2 @@
 from .validators import validate
-from .utils import cleanup, initredis
+from .utils import cleanup

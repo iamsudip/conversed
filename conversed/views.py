@@ -24,16 +24,15 @@ def profile():
     else:
         try:
             redis_server = redis.Redis(connection_pool=POOL)
-            if not (redis_server.exists(emailid) or LOCAL_DEV):
+            if not redis_server.exists(emailid):
                 payload = {
                     'key': API_KEY,
                     'person_email': emailid,
-                    'force': 1
                 }
                 response = requests.get(API, params=payload)
                 if response.status_code == 200:
                     data = json.loads(response.text)
-                    if data.get('success'):
+                    if data.get('profile').get('status').get('has_person_data'):
                         cleaned_data = cleanup(data)
                         redis_server.set(emailid, json.dumps(cleaned_data))
                         redis_server.bgsave()
@@ -43,8 +42,9 @@ def profile():
                 data = json.loads(redis_server.get(emailid))
             except ValueError:
                 data = literal_eval(redis_server.get(emailid))
-            if data.get('success', False):
-                return render_template("data.html", user=data)
+            if data.get('profile').get('status').get('has_person_data', False):
+                return render_template("data.html",
+                                       user=data['profile']['person_data'])
             else:
                 return render_template("sorry.html")
         except (requests.exceptions.ConnectionError, TypeError):
