@@ -77,12 +77,12 @@
                 <p><b>Social Profiles:</b></p>
                 <ul>
                   {% for profile in user.social_profiles %}
-                    {% if profile.typeName not in ['Other', 'Klout', 'About.me', 'Aboutme'] %}
+                    {% if profile.typeName not in ['Other', 'Klout', 'About.me', 'Aboutme', 'Facebook'] %}
                       <li>
                         <p><b>{{ profile.typeName }}</b>{% if profile.type in ['linkedin', 'googleplus', 'foursquare', 'google', 'googleprofile'] %} <b>ID:</b> <a href="{{ profile.url }}" target="_blank">{% if profile.type == profile.username %}{{ profile.url }}{% else %}{{ profile.id or profile.username }}{% endif %}</a> {% elif profile.username -%} <b>:</b> <a href="{{ profile.url }}" target="_blank">{{ profile.username }}</a> {% endif %}{% if profile.bio %}, {{ profile.bio|striptags()|urlize() }}{% endif %}</p>
                       </li>
                     {% endif %}
-                    {% if profile.typeName in ['About.me', 'Aboutme'] %}
+                    {% if profile.typeName in ['About.me', 'Aboutme', 'Facebook'] %}
                       <li>
                         <p><b>{{ profile.typeName }}: </b><a href="{{ profile.url }}" target="_blank">{{ profile.url }}</a>
                       </li>
