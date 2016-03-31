@@ -26,8 +26,8 @@ def profile():
             redis_server = redis.Redis(connection_pool=POOL)
             if not (redis_server.exists(emailid) or LOCAL_DEV):
                 payload = {
-                    'api_key': API_KEY,
-                    'email': emailid,
+                    'key': API_KEY,
+                    'person_email': emailid,
                     'force': 1
                 }
                 response = requests.get(API, params=payload)
@@ -54,7 +54,7 @@ def profile():
 @application.route('/status/')
 def api_status():
     payload = {
-        'api_key': API_KEY,
+        'key': API_KEY,
     }
     response = requests.get(API_STAT, params=payload)
     if response.status_code == 200:
