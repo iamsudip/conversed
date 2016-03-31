@@ -29,7 +29,7 @@ def profile():
                     'key': API_KEY,
                     'person_email': emailid,
                 }
-                response = requests.get(API, params=payload)
+                response = requests.get(API, params=payload, verify=False)
                 if response.status_code == 200:
                     data = json.loads(response.text)
                     if data.get('profile').get('status').get('has_person_data'):
@@ -56,7 +56,7 @@ def api_status():
     payload = {
         'key': API_KEY,
     }
-    response = requests.get(API_STAT, params=payload)
+    response = requests.get(API_STAT, params=payload, verify=False)
     if response.status_code == 200:
         data = json.loads(response.text)
         return render_template("status.html", data=data)

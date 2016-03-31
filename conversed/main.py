@@ -18,10 +18,8 @@ from views import *
 r_server = redis.Redis(connection_pool=POOL)
 version = r_server.get(FLUSH_REDIS)
 if not version or FLUSH_VERSION > version:
-    print "Flushing all redis keys" '*'*50
     r_server.flushall()
     r_server.set(FLUSH_REDIS, FLUSH_VERSION)
-    print "Flushing complete."
 
 # A neat hack to add custom functions to jinja
 @application.template_filter('websites')
