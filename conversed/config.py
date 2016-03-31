@@ -17,3 +17,6 @@ API_STAT = 'https://vibeapp.co/api/v1/api_stats/'
 API_KEY = '1506031333144200697baf0680018ab63e17d327076ef437f5'
 
 LOCAL_DEV = False if os.environ.get('OPENSHIFT_REDIS_DB_PASSWORD') else True
+
+FLUSH_VERSION = 2
+FLUSH_REDIS = 'FLUSH_REDIS'
