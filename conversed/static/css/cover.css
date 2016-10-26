@@ -22,6 +22,12 @@ a:hover {
   border: 1px solid #fff;
 }
 
+.btn-default:hover,
+.btn-default:focus {
+  background-image: none;
+}
+
+
 /*
  * Base structure
  */
